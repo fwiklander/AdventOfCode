@@ -19,14 +19,14 @@ namespace AdventOfCode
 
         private static void Part1(string input, int stepLength)
         {
-            int letters = input.Length, sum = 0;
-            for (var a = 0; a < letters; a++)
+            int lettersCount = input.Length, sum = 0;
+            for (var letterIndex = 0; letterIndex < lettersCount; letterIndex++)
             {
-                var secondIndex = a + stepLength > letters - 1 ? stepLength - (letters - a) : a + stepLength;
-                sum += GetAddition(input[a], input[secondIndex]);
+                var secondIndex = letterIndex + stepLength > lettersCount - 1 ? stepLength - (lettersCount - letterIndex) : letterIndex + stepLength;
+                sum += GetAddition(input[letterIndex], input[secondIndex]);
             }
 
-            Console.WriteLine("Number of letters = " + letters);
+            Console.WriteLine("Number of letters = " + lettersCount);
             Console.WriteLine("Sum = " + sum);
         }
 

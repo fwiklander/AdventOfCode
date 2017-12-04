@@ -6,7 +6,7 @@ namespace ConsoleApp1
 {
     public class Program
     {
-        private static string QuestionSeparator = "-------------------- {0} --------------------";
+        private const string QuestionSeparator = "-------------------- {0} --------------------";
 
         public static void Main(string[] args)
         {

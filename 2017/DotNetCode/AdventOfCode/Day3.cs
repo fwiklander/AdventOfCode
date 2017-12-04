@@ -21,13 +21,12 @@ namespace AdventOfCode
         public static int CalculateNPlus1(int theN)
         {
             var currentPos = new Point(0, 0);
-            var nextPos = new Point(1, 0);
             var valueMap = new Dictionary<Point, int> { { currentPos, 1 } };
 
             var offset = new Point(1, 0);
             int stepCount = 1, currentStepLength = 1;
 
-            int currentVal = 1;
+            int currentVal;
             do
             {
                 currentPos.Offset(offset);
@@ -97,7 +96,6 @@ namespace AdventOfCode
                     stepCount = currentStepLength;
 
                 currentVal = pointSum;
-                //currentVal++;
             } while (currentVal <= theN);
 
             return currentVal;
@@ -116,7 +114,7 @@ namespace AdventOfCode
             var ringSteps = (ring - 1) / 2;
 
             var lowerBound = upperBound - (ring - 1);
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 if (lowerBound <= memoryValue)
                 {
