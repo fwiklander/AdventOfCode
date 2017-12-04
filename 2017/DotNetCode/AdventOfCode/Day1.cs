@@ -9,7 +9,7 @@ namespace AdventOfCode
         public void Run()
         {
             Console.WriteLine("----- Part 1 -----");
-            Part1("", 1);
+            Part1(_input, 1);
 
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
@@ -19,25 +19,20 @@ namespace AdventOfCode
 
         private static void Part1(string input, int stepLength)
         {
-            if (string.IsNullOrEmpty(input)) input = _input;
-
-            var letters = input.ToCharArray();
-            var lettersLength = letters.Length;
-
-            var sum = 0;
-            for (var a = 0; a < lettersLength; a++)
+            int letters = input.Length, sum = 0;
+            for (var a = 0; a < letters; a++)
             {
-                var secondIndex = a + stepLength > lettersLength - 1 ? stepLength - (lettersLength - a) : a + stepLength;
-                sum += GetAddition(letters[a], letters[secondIndex]);
+                var secondIndex = a + stepLength > letters - 1 ? stepLength - (letters - a) : a + stepLength;
+                sum += GetAddition(input[a], input[secondIndex]);
             }
 
-            Console.WriteLine("Number of letters = " + lettersLength);
+            Console.WriteLine("Number of letters = " + letters);
             Console.WriteLine("Sum = " + sum);
         }
 
-        private static int GetAddition(char a, char b)
+        private static int GetAddition(char firstChar, char secondChar)
         {
-            return a == b ? int.Parse(a.ToString()) : 0;
+            return firstChar == secondChar ? int.Parse(firstChar.ToString()) : 0;
         }
     }
 }
