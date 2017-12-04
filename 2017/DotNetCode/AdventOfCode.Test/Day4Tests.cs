@@ -8,7 +8,8 @@ namespace AdventOfCode.Test
         [Test]
         public void Task1_CorrectCount()
         {
-            var sum = Day4.CalculateValidPhrases("Day4_test1.txt", false);
+            var passphrases = Day4.GetPassphrases("Day4_test1.txt");
+            var sum = Day4.CalculateValidPhrases(passphrases, false);
 
             Assert.That(sum, Is.EqualTo(2));
         }
@@ -16,7 +17,8 @@ namespace AdventOfCode.Test
         [Test]
         public void Task2_CorrectCount()
         {
-            var sum = Day4.CalculateValidPhrases("Day4_test2.txt", true);
+            var passphrases = Day4.GetPassphrases("Day4_test1.txt");
+            var sum = Day4.CalculateValidPhrases(passphrases, true);
 
             Assert.That(sum, Is.EqualTo(3));
         }

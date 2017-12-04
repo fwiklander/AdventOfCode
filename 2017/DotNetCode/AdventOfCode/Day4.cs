@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -9,70 +10,62 @@ namespace AdventOfCode
     {
         public static void Run()
         {
-            var validCount = CalculateValidPhrases("Day4.txt", false);
+            string[] passphrases = GetPassphrases("Day4.txt");
+            var validCount = CalculateValidPhrases(passphrases, false);
+            var validCountAdvanced = CalculateValidPhrases(passphrases, true);
+
             Console.WriteLine("----- Part 1 -----");
             Console.WriteLine($"Valid pass phrases part 1: {validCount}");
 
-            validCount = CalculateValidPhrases("Day4.txt", true);
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
-            Console.WriteLine($"Sum part 2: {validCount}");
+            Console.WriteLine($"Sum part 2: {validCountAdvanced}");
         }
 
-        public static int CalculateValidPhrases(string filename, bool advancedSecurity)
+        public static string[] GetPassphrases(string filename)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"AdventOfCode.Inputs.Day4.{filename}";
-
-            var validPhrases = 0;
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             using (var reader = new StreamReader(stream))
             {
-                while (!reader.EndOfStream)
-                {
-                    validPhrases += IsPhraseValid(reader.ReadLine(), advancedSecurity);
-                }
+                return reader.ReadToEnd().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             }
+        }
+
+        public static int CalculateValidPhrases(string[] passphrases, bool advancedSecurity)
+        {
+            Stopwatch watch = Stopwatch.StartNew();
+            var validPhrases = passphrases.Sum(passphrase => IsPhraseValid(passphrase, advancedSecurity));
+            watch.Stop();
+            Console.WriteLine($"Inner time: {watch.ElapsedMilliseconds}");
 
             return validPhrases;
         }
 
         private static int IsPhraseValid(string passphrase, bool isAdvanced)
         {
-            try
+            var words = passphrase.Split('\t', ' ').ToList();
+            var startIndex = 1;
+            foreach (var word in words)
             {
-                var keyValue = passphrase.Split('\t', ' ').ToDictionary(x => x);
-                if (isAdvanced)
+                var wordChars = word.ToCharArray();
+                if (isAdvanced) Array.Sort(wordChars);
+                var wordStringSorted = new string(wordChars);
+                for (var i = startIndex; i < words.Count; i++)
                 {
-                    var words = keyValue.Keys.ToList();
-                    foreach (var word in words)
+                    var toCheckChars = words[i].ToCharArray();
+                    if (isAdvanced) Array.Sort(toCheckChars);
+                    if (wordStringSorted.Equals(new string(toCheckChars)))
                     {
-                        var wordChars = word.ToCharArray();
-                        Array.Sort(wordChars);
-                        var wordStringSorted = new string(wordChars);
-                        foreach (var toCheck in words)
-                        {
-                            if (word.Equals(toCheck))
-                                continue;
-
-                            var toCheckChars = toCheck.ToCharArray();
-
-                            Array.Sort(toCheckChars);
-
-                            if (wordStringSorted.Equals(new string(toCheckChars)))
-                            {
-                                return 0;
-                            }
-                        }
+                        return 0;
                     }
                 }
 
-                return 1;
+                startIndex++;
             }
-            catch
-            {
-                return 0;
-            }
+
+            return 1;
         }
     }
 }
