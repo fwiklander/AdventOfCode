@@ -5,9 +5,9 @@ using System.Reflection;
 
 namespace AdventOfCode
 {
-    public class Day4 : IDay
+    public class Day4
     {
-        public void Run()
+        public static void Run()
         {
             var validCount = CalculateValidPhrases("Day4.txt", false);
             Console.WriteLine("----- Part 1 -----");

@@ -4,9 +4,9 @@ using System.Drawing;
 
 namespace AdventOfCode
 {
-    public class Day3 : IDay
+    public class Day3
     {
-        public void Run()
+        public static void Run()
         {
             var sum = CalculateManhattanDistance(265149);
             Console.WriteLine("----- Part 1 -----");

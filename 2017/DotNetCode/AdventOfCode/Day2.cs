@@ -4,9 +4,9 @@ using System.Reflection;
 
 namespace AdventOfCode
 {
-    public class Day2 : IDay
+    public class Day2
     {
-        public void Run()
+        public static void Run()
         {
             var sum = CalculateSum("Day2.txt", true);
             Console.WriteLine("----- Part 1 -----");
