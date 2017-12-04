@@ -24,9 +24,9 @@ namespace AdventOfCode
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"AdventOfCode.Inputs.Day4.{filename}";
 
-            int validPhrases = 0;
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            var validPhrases = 0;
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            using (var reader = new StreamReader(stream))
             {
                 while (!reader.EndOfStream)
                 {

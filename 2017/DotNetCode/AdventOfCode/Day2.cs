@@ -23,9 +23,9 @@ namespace AdventOfCode
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = $"AdventOfCode.Inputs.Day2.{filename}";
 
-            int sum = 0;
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            var sum = 0;
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            using (var reader = new StreamReader(stream))
             {
                 while (!reader.EndOfStream)
                 {
@@ -35,7 +35,7 @@ namespace AdventOfCode
                     }
                     else
                     {
-                        sum += GetAdditionFromDivisor(reader.ReadLine());
+                        sum += GetAdditionFromDivison(reader.ReadLine());
                     }
                 }
             }
@@ -43,11 +43,10 @@ namespace AdventOfCode
             return sum;
         }
 
-        private static int GetAdditionFromDivisor(string line)
+        private static int GetAdditionFromDivison(string line)
         {
             var values = line.Split('\t', ' ');
 
-            int lineSum = 0;
             foreach (var outerValue in values)
             {
                 var outerInt = int.Parse(outerValue);
