@@ -17,7 +17,7 @@ namespace AdventOfCode.Test
         [Test]
         public void Task2_CorrectCount()
         {
-            var passphrases = Day4.GetPassphrases("Day4_test1.txt");
+            var passphrases = Day4.GetPassphrases("Day4_test2.txt");
             var sum = Day4.CalculateValidPhrases(passphrases, true);
 
             Assert.That(sum, Is.EqualTo(3));
