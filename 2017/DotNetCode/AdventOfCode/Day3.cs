@@ -88,14 +88,14 @@ namespace AdventOfCode
                 valueMap.TryGetValue(pointInnerBehind, out int valueInnerBehind);
                 valueMap.TryGetValue(pointInnerAhead, out int valueInnerAhead);
 
-                var pointSum = valueBehind + valueInner + valueInnerBehind + valueInnerAhead;
+                currentVal = valueBehind + valueInner + valueInnerBehind + valueInnerAhead;
 
-                valueMap.Add(currentPos, pointSum);
+                valueMap.Add(currentPos, currentVal);
 
                 if (stepCount == 0)
+                {
                     stepCount = currentStepLength;
-
-                currentVal = pointSum;
+                }
             } while (currentVal <= theN);
 
             return currentVal;
