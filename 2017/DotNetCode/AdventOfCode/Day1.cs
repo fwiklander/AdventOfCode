@@ -21,22 +21,17 @@ namespace AdventOfCode
         {
             if (string.IsNullOrEmpty(input)) input = _input;
 
-            var letters = new char[input.Length];
-            var i = 0;
-            foreach (var c in input)
-            {
-                letters[i] = c;
-                i++;
-            }
+            var letters = input.ToCharArray();
+            var lettersLength = letters.Length;
 
             var sum = 0;
-            for (var a = 0; a < i; a++)
+            for (var a = 0; a < lettersLength; a++)
             {
-                var secondIndex = a + stepLength > i - 1 ? stepLength - (i - a) : a + stepLength;
+                var secondIndex = a + stepLength > lettersLength - 1 ? stepLength - (lettersLength - a) : a + stepLength;
                 sum += GetAddition(letters[a], letters[secondIndex]);
             }
 
-            Console.WriteLine("i = " + i);
+            Console.WriteLine("Number of letters = " + lettersLength);
             Console.WriteLine("Sum = " + sum);
         }
 
