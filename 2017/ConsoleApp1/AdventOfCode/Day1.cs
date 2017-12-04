@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace AdventOfCode
 {
     public class Day1 : IDay
     {

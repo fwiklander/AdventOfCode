@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace ConsoleApp1
+﻿namespace AdventOfCode
 {
     public interface IDay
     {

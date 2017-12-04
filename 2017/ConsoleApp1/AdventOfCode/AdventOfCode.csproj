@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3EBC8A87-CBE4-4802-BACB-FC4DECCA64AD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp1</RootNamespace>
-    <AssemblyName>ConsoleApp1</AssemblyName>
+    <ProjectGuid>{B17E44D0-0E6E-4456-9423-0183BFB08C54}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdventOfCode</RootNamespace>
+    <AssemblyName>AdventOfCode</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,17 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Day4.cs" />
+    <Compile Include="Day3.cs" />
+    <Compile Include="Day1.cs" />
+    <Compile Include="Day2.cs" />
+    <Compile Include="IDay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <EmbeddedResource Include="Inputs\Day2\Day2.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdventOfCode\AdventOfCode.csproj">
-      <Project>{b17e44d0-0e6e-4456-9423-0183bfb08c54}</Project>
-      <Name>AdventOfCode</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Inputs\Day2\Day2_1_test1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Inputs\Day2\Day2_2_test1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Inputs\Day4\Day4.txt" />
+    <EmbeddedResource Include="Inputs\Day4\Day4_test1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Inputs\Day4\Day4_test2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
