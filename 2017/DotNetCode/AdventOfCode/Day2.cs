@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace AdventOfCode
@@ -45,14 +46,11 @@ namespace AdventOfCode
 
         private static int GetAdditionFromDivison(string line)
         {
-            var values = line.Split('\t', ' ');
-
-            foreach (var outerValue in values)
+            var values = line.Split('\t', ' ').Select(int.Parse).ToList();
+            foreach (var outerInt in values)
             {
-                var outerInt = int.Parse(outerValue);
-                foreach (var innerValue in values)
+                foreach (var innerInt in values)
                 {
-                    var innerInt = int.Parse(innerValue);
                     if (innerInt != outerInt && outerInt % innerInt == 0)
                     {
                         return outerInt / innerInt;
@@ -65,16 +63,8 @@ namespace AdventOfCode
 
         private static int GetAdditionFromMaxAndMin(string line)
         {
-            var values = line.Split('\t', ' ');
-            int min = int.MaxValue, max = int.MinValue;
-            foreach (var value in values)
-            {
-                var intVal = int.Parse(value);
-                min = Math.Min(min, intVal);
-                max = Math.Max(max, intVal);
-            }
-
-            return max - min;
+            var values = line.Split('\t', ' ').Select(int.Parse).ToList();
+            return values.Max() - values.Min();
         }
     }
 }
