@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
@@ -103,22 +104,20 @@ namespace AdventOfCode
 
         public static int CalculateManhattanDistance(int memoryValue)
         {
-            var ring = 1;
-            var upperBound = 1;
-            while (upperBound < memoryValue)
+            var ring = (int)Math.Ceiling(Math.Sqrt(memoryValue));
+            if (ring % 2 == 0)
             {
-                ring += 2;
-                upperBound = ring * ring;
+                ring++;
             }
 
+            var upperBound = ring * ring;
             var ringSteps = (ring - 1) / 2;
-
             var lowerBound = upperBound - (ring - 1);
             for (var i = 0; i < 4; i++)
             {
                 if (lowerBound <= memoryValue)
                 {
-                    var columnSteps = Math.Abs(upperBound - (ring - 1) / 2 - memoryValue);
+                    var columnSteps = Math.Abs(upperBound - ringSteps - memoryValue);
                     return ringSteps + columnSteps;
                 }
 

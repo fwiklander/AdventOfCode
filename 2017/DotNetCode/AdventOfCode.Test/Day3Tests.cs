@@ -38,6 +38,30 @@ namespace AdventOfCode.Test
         }
 
         [Test]
+        public void Task1_CorrectSum5()
+        {
+            var sum = Day3.CalculateManhattanDistance(7);
+
+            Assert.That(sum, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Task1_CorrectSum6()
+        {
+            var sum = Day3.CalculateManhattanDistance(25);
+
+            Assert.That(sum, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void Task1_CorrectSum7()
+        {
+            var sum = Day3.CalculateManhattanDistance(24);
+
+            Assert.That(sum, Is.EqualTo(3));
+        }
+
+        [Test]
         public void Task2_CorrectSum1()
         {
             var val = Day3.CalculateNPlus1(23);
