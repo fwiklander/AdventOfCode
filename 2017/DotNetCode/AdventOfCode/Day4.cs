@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -10,16 +11,16 @@ namespace AdventOfCode
     {
         public static void Run()
         {
-            string[] passphrases = GetPassphrases("Day4.txt");
+            var passphrases = GetPassphrases("Day4.txt");
             var validCount = CalculateValidPhrases(passphrases, false);
             var validCountAdvanced = CalculateValidPhrases(passphrases, true);
 
             Console.WriteLine("----- Part 1 -----");
-            Console.WriteLine($"Valid pass phrases part 1: {validCount}");
+            Console.WriteLine($"Valid pass phrases: {validCount}");
 
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
-            Console.WriteLine($"Sum part 2: {validCountAdvanced}");
+            Console.WriteLine($"Valid pass phrases: {validCountAdvanced}");
         }
 
         public static string[] GetPassphrases(string filename)
@@ -33,13 +34,9 @@ namespace AdventOfCode
             }
         }
 
-        public static int CalculateValidPhrases(string[] passphrases, bool advancedSecurity)
+        public static int CalculateValidPhrases(IEnumerable<string> passphrases, bool advancedSecurity)
         {
-            var watch = Stopwatch.StartNew();
             var validPhrases = passphrases.Sum(passphrase => IsPhraseValid(passphrase, advancedSecurity));
-            watch.Stop();
-            ////Console.WriteLine($"Inner time: {watch.ElapsedMilliseconds}");
-
             return validPhrases;
         }
 

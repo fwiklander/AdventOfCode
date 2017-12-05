@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
@@ -11,12 +10,12 @@ namespace AdventOfCode
         {
             var sum = CalculateManhattanDistance(265149);
             Console.WriteLine("----- Part 1 -----");
-            Console.WriteLine($"Sum part 1: {sum}");
+            Console.WriteLine($"Distance: {sum}");
 
             var nPlusOne = CalculateNPlus1(265149);
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
-            Console.WriteLine($"Sum part 2: {nPlusOne}");
+            Console.WriteLine($"Distance: {nPlusOne}");
         }
 
         public static int CalculateNPlus1(int theN)

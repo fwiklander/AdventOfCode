@@ -9,15 +9,15 @@ namespace AdventOfCode
         public static void Run()
         {
             Console.WriteLine("----- Part 1 -----");
-            Part1(_input, 1);
+            Console.WriteLine($"Sum = {Part1(_input, 1)}");
 
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
             var input = _input;
-            Part1(input, input.Length / 2);
+            Console.WriteLine($"Sum = {Part1(input, input.Length / 2)}");
         }
 
-        private static void Part1(string input, int stepLength)
+        private static int Part1(string input, int stepLength)
         {
             int lettersCount = input.Length, sum = 0;
             for (var letterIndex = 0; letterIndex < lettersCount; letterIndex++)
@@ -26,8 +26,7 @@ namespace AdventOfCode
                 sum += GetAddition(input[letterIndex], input[secondIndex]);
             }
 
-            Console.WriteLine("Number of letters = " + lettersCount);
-            Console.WriteLine("Sum = " + sum);
+            return sum;
         }
 
         private static int GetAddition(char firstChar, char secondChar)

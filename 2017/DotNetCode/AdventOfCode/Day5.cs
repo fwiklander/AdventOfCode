@@ -16,11 +16,11 @@ namespace AdventOfCode
             var validCountTask2 = LeaveInstructionList2(instructions);
 
             Console.WriteLine("----- Part 1 -----");
-            Console.WriteLine($"Count part 1: {validCount}");
+            Console.WriteLine($"Count: {validCount}");
 
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
-            Console.WriteLine($"Count part 2: {validCountTask2}");
+            Console.WriteLine($"Count: {validCountTask2}");
         }
 
         public static int LeaveInstructionList(List<int> instructions, int index = 0)
@@ -51,7 +51,7 @@ namespace AdventOfCode
             return totalCount;
         }
 
-        public static List<int> GetInput(string fileName)
+        private static List<int> GetInput(string fileName)
         {
             var input = new List<int>();
             var assembly = Assembly.GetExecutingAssembly();

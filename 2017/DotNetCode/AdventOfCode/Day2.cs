@@ -11,12 +11,12 @@ namespace AdventOfCode
         {
             var sum = CalculateSum("Day2.txt", true);
             Console.WriteLine("----- Part 1 -----");
-            Console.WriteLine($"Sum part 1: {sum}");
+            Console.WriteLine($"Sum: {sum}");
 
             sum = CalculateSum("Day2.txt", false);
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
-            Console.WriteLine($"Sum part 2: {sum}");
+            Console.WriteLine($"Sum: {sum}");
         }
 
         public static int CalculateSum(string filename, bool fromMaxAndMin)
@@ -40,7 +40,7 @@ namespace AdventOfCode
                     }
                 }
             }
-            
+
             return sum;
         }
 
