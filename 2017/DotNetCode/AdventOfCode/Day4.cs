@@ -35,10 +35,10 @@ namespace AdventOfCode
 
         public static int CalculateValidPhrases(string[] passphrases, bool advancedSecurity)
         {
-            Stopwatch watch = Stopwatch.StartNew();
+            var watch = Stopwatch.StartNew();
             var validPhrases = passphrases.Sum(passphrase => IsPhraseValid(passphrase, advancedSecurity));
             watch.Stop();
-            Console.WriteLine($"Inner time: {watch.ElapsedMilliseconds}");
+            ////Console.WriteLine($"Inner time: {watch.ElapsedMilliseconds}");
 
             return validPhrases;
         }
