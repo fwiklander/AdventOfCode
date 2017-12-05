@@ -24,64 +24,14 @@ namespace AdventOfCode
             var valueMap = new Dictionary<Point, int> { { currentPos, 1 } };
 
             var offset = new Point(1, 0);
-            int stepCount = 1, currentStepLength = 1;
-
             int currentVal;
             do
             {
                 currentPos.Offset(offset);
-                stepCount--;
-                Point pointBehind, pointInner, pointInnerBehind, pointInnerAhead;
-                if (offset.X > 0)
-                {
-                    pointBehind = new Point(currentPos.X - 1, currentPos.Y);
-                    pointInner = new Point(currentPos.X, currentPos.Y + 1);
-                    pointInnerBehind = new Point(pointInner.X - 1, pointInner.Y);
-                    pointInnerAhead = new Point(pointInner.X + 1, pointInner.Y);
-
-                    if (stepCount == 0)
-                    {
-                        offset = new Point(0, 1);
-                    }
-                }
-                else if (offset.Y > 0)
-                {
-                    pointBehind = new Point(currentPos.X, currentPos.Y - 1);
-                    pointInner = new Point(currentPos.X - 1, currentPos.Y);
-                    pointInnerBehind = new Point(pointInner.X, pointInner.Y - 1);
-                    pointInnerAhead = new Point(pointInner.X, pointInner.Y + 1);
-
-                    if (stepCount == 0)
-                    {
-                        currentStepLength++;
-                        offset = new Point(-1, 0);
-                    }
-                }
-                else if (offset.X < 0)
-                {
-                    pointBehind = new Point(currentPos.X + 1, currentPos.Y);
-                    pointInner = new Point(currentPos.X, currentPos.Y - 1);
-                    pointInnerBehind = new Point(pointInner.X + 1, pointInner.Y);
-                    pointInnerAhead = new Point(pointInner.X - 1, pointInner.Y);
-
-                    if (stepCount == 0)
-                    {
-                        offset = new Point(0, -1);
-                    }
-                }
-                else // if (offset.Y < 0)
-                {
-                    pointBehind = new Point(currentPos.X, currentPos.Y + 1);
-                    pointInner = new Point(currentPos.X + 1, currentPos.Y);
-                    pointInnerBehind = new Point(pointInner.X, pointInner.Y + 1);
-                    pointInnerAhead = new Point(pointInner.X, pointInner.Y - 1);
-
-                    if (stepCount == 0)
-                    {
-                        currentStepLength++;
-                        offset = new Point(1, 0);
-                    }
-                }
+                var pointBehind = new Point(currentPos.X - offset.X, currentPos.Y - offset.Y);
+                var pointInner = new Point(currentPos.X - offset.Y, currentPos.Y + offset.X);
+                var pointInnerBehind = new Point(pointInner.X - offset.X, pointInner.Y - offset.Y);
+                var pointInnerAhead = new Point(pointInner.X + offset.X, pointInner.Y + offset.Y);
 
                 valueMap.TryGetValue(pointBehind, out int valueBehind);
                 valueMap.TryGetValue(pointInner, out int valueInner);
@@ -92,9 +42,9 @@ namespace AdventOfCode
 
                 valueMap.Add(currentPos, currentVal);
 
-                if (stepCount == 0)
+                if (!valueMap.ContainsKey(new Point(currentPos.X - offset.Y, currentPos.Y + offset.X)))
                 {
-                    stepCount = currentStepLength;
+                    offset = new Point(-offset.Y, offset.X);
                 }
             } while (currentVal <= theN);
 
