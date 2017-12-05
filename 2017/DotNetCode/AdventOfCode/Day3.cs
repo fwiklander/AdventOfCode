@@ -15,7 +15,7 @@ namespace AdventOfCode
             var nPlusOne = CalculateNPlus1(265149);
             Console.WriteLine();
             Console.WriteLine("----- Part 2 -----");
-            Console.WriteLine($"Distance: {nPlusOne}");
+            Console.WriteLine($"Number after N: {nPlusOne}");
         }
 
         public static int CalculateNPlus1(int theN)
