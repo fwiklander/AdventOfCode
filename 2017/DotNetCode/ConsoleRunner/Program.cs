@@ -40,6 +40,12 @@ namespace ConsoleApp1
             watch.Stop();
             PrintRequiredTime(watch);
 
+            Console.WriteLine(QuestionSeparator, "Day 6");
+            watch = Stopwatch.StartNew();
+            Day6.Run();
+            watch.Stop();
+            PrintRequiredTime(watch);
+
             Console.WriteLine(QuestionSeparator, "DONE");
             Console.Read();
         }
