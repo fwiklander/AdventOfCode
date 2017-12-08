@@ -47,6 +47,8 @@
     <Compile Include="Day2.cs" />
     <Compile Include="Day5.cs" />
     <Compile Include="Day6.cs" />
+    <Compile Include="Day7.cs" />
+    <Compile Include="Day8.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +70,14 @@
   <ItemGroup>
     <EmbeddedResource Include="Inputs\Day5\Day5.txt" />
     <EmbeddedResource Include="Inputs\Day5\Day5_test1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Inputs\Day7\Day7.txt" />
+    <EmbeddedResource Include="Inputs\Day7\Day7_test1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Inputs\Day8\Day8_test1.txt" />
+    <EmbeddedResource Include="Inputs\Day8\Day8.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

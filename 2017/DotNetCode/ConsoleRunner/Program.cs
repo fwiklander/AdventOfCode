@@ -46,6 +46,18 @@ namespace ConsoleApp1
             watch.Stop();
             PrintRequiredTime(watch);
 
+            Console.WriteLine(QuestionSeparator, "Day 7");
+            watch = Stopwatch.StartNew();
+            Day7.Run();
+            watch.Stop();
+            PrintRequiredTime(watch);
+
+            Console.WriteLine(QuestionSeparator, "Day 8");
+            watch = Stopwatch.StartNew();
+            Day8.Run();
+            watch.Stop();
+            PrintRequiredTime(watch);
+
             Console.WriteLine(QuestionSeparator, "DONE");
             Console.Read();
         }

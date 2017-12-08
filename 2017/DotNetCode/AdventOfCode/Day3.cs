@@ -6,6 +6,8 @@ namespace AdventOfCode
 {
     public class Day3
     {
+        public static Dictionary<Point, int> ValueMap { get; set; }
+
         public static void Run()
         {
             var sum = CalculateManhattanDistance(265149);
@@ -48,6 +50,7 @@ namespace AdventOfCode
                 }
             } while (currentVal <= theN);
 
+            ValueMap = valueMap;
             return currentVal;
         }
 
